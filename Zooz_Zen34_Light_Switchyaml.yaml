@@ -92,7 +92,7 @@ action:
               - condition: state
                 entity_id: !input scene_paddle_up
                 state: '1'
-            sequence: !button_up_hold
+            sequence: !input button_up_hold
       - conditions:
           - condition: state
             entity_id: !input scene_paddle_down
