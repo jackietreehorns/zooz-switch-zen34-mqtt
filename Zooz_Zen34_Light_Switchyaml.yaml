@@ -58,6 +58,7 @@ trigger:
     entity_id: 
       !input scene_paddle_up
       !input scene_paddle_down
+    to: '0'
 
 action:
   - choose:
