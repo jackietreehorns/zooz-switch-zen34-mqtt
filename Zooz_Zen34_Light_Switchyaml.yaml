@@ -21,6 +21,30 @@ blueprint:
       default: []
       selector:
         action: {}
+    button_upx2:
+      name: Button A - Up/On press 2x
+      description: Action to run, when the button is pressed two times.
+      default: []
+      selector:
+        action: {}
+    button_upx3:
+      name: Button A - Up/On press 3x
+      description: Action to run, when the button is pressed three times.
+      default: []
+      selector:
+        action: {}
+    button_upx4:
+      name: Button A - Up/On press 4x
+      description: Action to run, when the button is pressed four times.
+      default: []
+      selector:
+        action: {}
+    button_up_hold:
+      name: Button A - Up/On Hold
+      description: Action to run, when the button is pressed four times.
+      default: []
+      selector:
+        action: {}
     button_down:
       name: Button B - Down/Off press 1x
       description: Action to run, when the button is pressed one time.
@@ -34,7 +58,6 @@ trigger:
     entity_id: 
       !input scene_paddle_up
       !input scene_paddle_down
-    to: '0'
 
 action:
   - choose:
