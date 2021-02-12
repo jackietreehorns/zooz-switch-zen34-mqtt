@@ -50,10 +50,7 @@ mode: restart
 
 trigger:
   - platform: state
-    entity_id: 
-      - !input scene_paddle_up
-    to:
-
+    entity_id: !input scene_paddle_up
 
 action:
   - choose:
