@@ -1,5 +1,5 @@
 blueprint:
-  name: Zooz Zen34 Light Switch test 1
+  name: Zooz Zen34 Light Switch test 2
   description: Switch Control
   domain: automation
   input:
@@ -31,9 +31,10 @@ mode: restart
   
 trigger:
   - platform: state
-    entity_id: !input scene_paddle_up
-  - platform: state
-    entity_id: !input scene_paddle_down
+    entity_id: 
+      - !input scene_paddle_up
+      - !input scene_paddle_down
+    to: '0'
 
 action:
   - choose:
@@ -47,3 +48,6 @@ action:
             entity_id: !input scene_paddle_down
             state: '0'
         sequence: !input button_down
+
+
+
