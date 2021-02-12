@@ -56,7 +56,8 @@ mode: restart
 trigger:
   - platform: state
     entity_id: 
-      - !input scene_paddle_up
+      !input scene_paddle_up
+      !input scene_paddle_down
     to: '0'
 
 action:
@@ -69,22 +70,22 @@ action:
       - conditions:
         - condition: state
           entity_id: !input scene_paddle_up
-          state: '0'
+          state: '3'
         sequence: !input button_upx2
       - conditions:
         - condition: state
           entity_id: !input scene_paddle_up
-          state: '3'
+          state: '4'
         sequence: !input button_upx3
       - conditions:
         - condition: state
           entity_id: !input scene_paddle_up
-          state: '4'
+          state: '5'
         sequence: !input button_upx4
       - conditions:
         - condition: state
           entity_id: !input scene_paddle_up
-          state: '5'
+          state: '2'
         sequence: 
         - repeat:
             until:
@@ -95,5 +96,5 @@ action:
       - conditions:
           - condition: state
             entity_id: !input scene_paddle_down
-            state: '2'
+            state: '0'
         sequence: !input button_down
