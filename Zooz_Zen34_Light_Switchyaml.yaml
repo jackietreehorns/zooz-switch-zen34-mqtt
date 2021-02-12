@@ -1,0 +1,45 @@
+blueprint:
+  name: Zooz Zen34 Light Switch test 1
+  description: Switch Control
+  domain: automation
+  input:
+    scene_paddle_up:
+        name: Button A - Up/On
+        description: Scene for Paddle Up
+        selector:
+          entity:
+            domain: sensor 
+    button_up:
+      name: Button A - Up/On press 1x
+      description: Action to run, when the button is pressed one time.
+      default: []
+      selector:
+        action: {}
+    button_down:
+      name: Button B - Down/Off press 1x
+      description: Action to run, when the button is pressed one time.
+      default: []
+      selector:
+        action: {}
+mode: restart
+  
+trigger:
+  - platform: state
+    entity_id: !input scene_paddle_up
+    to: '0'
+  - platform: state
+    entity_id: !input scene_paddle_down
+    to: '0'
+
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: !input scene_paddle_up
+            state: '0'
+        sequence: !input button_up
+        conditions:
+          - condition: state
+            entity_id: !input scene_paddle_down
+            state: '0'
+        sequence: !input button_down
