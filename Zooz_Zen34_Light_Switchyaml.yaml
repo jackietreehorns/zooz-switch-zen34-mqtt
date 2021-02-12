@@ -60,9 +60,9 @@ trigger:
 action:
   - choose:
       - conditions:
-          - condition: state
-            entity_id: !input scene_paddle_up
-            state: '0'
+        - condition: state
+          entity_id: !input scene_paddle_up
+          state: '0'
         sequence: !input button_up
       - conditions:
         - condition: state
