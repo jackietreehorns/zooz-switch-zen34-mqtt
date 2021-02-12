@@ -1,5 +1,5 @@
 blueprint:
-  name: Zooz Zen34 Light Switch test 2
+  name: Zooz Zen34 Light Switch test 3
   description: Switch Control
   domain: automation
   input:
