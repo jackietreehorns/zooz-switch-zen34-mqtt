@@ -3,25 +3,25 @@ blueprint:
   description: Switch Control
   domain: automation
   input:
-    - scene_paddle_up:
+    scene_paddle_up:
         name: Button A - Up/On
         description: Scene for Paddle Up
         selector:
           entity:
             domain: sensor 
-    - scene_paddle_down:
+    scene_paddle_down:
         name: Button B - Down/Off
         description: Scene for Paddle Down
         selector:
           entity:
             domain: sensor 
-    - button_up:
+    button_up:
       name: Button A - Up/On press 1x
       description: Action to run, when the button is pressed one time.
       default: []
       selector:
         action: {}
-    - button_down:
+    button_down:
       name: Button B - Down/Off press 1x
       description: Action to run, when the button is pressed one time.
       default: []
