@@ -98,3 +98,4 @@ action:
             entity_id: !input scene_paddle_down
             state: '0'
         sequence: !input button_down
+        
