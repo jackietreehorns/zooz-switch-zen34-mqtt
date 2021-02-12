@@ -40,8 +40,8 @@ blueprint:
       selector:
         action: {}
     button_up_hold:
-      name: Button A - Up/On Hold
-      description: Action to run, when the button is pressed four times.
+      name: Button A - Up/On Hold 
+      description: Action to repeat, when the button is held.
       default: []
       selector:
         action: {}
@@ -67,8 +67,34 @@ action:
             entity_id: !input scene_paddle_up
             state: '0'
         sequence: !input button_up
+        - conditions:
+          - condition: state
+            entity_id: !input scene_paddle_up
+            state: '0'
+        sequence: !input button_upx2
+        - conditions:
+          - condition: state
+            entity_id: !input scene_paddle_up
+            state: '3'
+        sequence: !input button_upx3
+        - conditions:
+          - condition: state
+            entity_id: !input scene_paddle_up
+            state: '4'
+        sequence: !input button_upx4
+        - conditions:
+          - condition: state
+            entity_id: !input scene_paddle_up
+            state: '5'
+        sequence: 
+          - repeat:
+              until:
+                - condition: state
+                  entity_id: !input scene_paddle_up
+                  state: '1'
+              sequence: !button_up_hold
       - conditions:
           - condition: state
             entity_id: !input scene_paddle_down
-            state: '0'
+            state: '2'
         sequence: !input button_down
