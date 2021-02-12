@@ -11,7 +11,7 @@ blueprint:
             domain: sensor 
     scene_paddle_down:
         name: Button B - Down/Off
-        description: Scene for Paddle Up
+        description: Scene for Paddle Down
         selector:
           entity:
             domain: sensor 
@@ -49,6 +49,3 @@ action:
             entity_id: !input scene_paddle_down
             state: '0'
         sequence: !input button_down
-
-
-
