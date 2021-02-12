@@ -51,6 +51,7 @@ blueprint:
       default: []
       selector:
         action: {}
+
 mode: restart  
 
 trigger:
@@ -58,7 +59,7 @@ trigger:
     entity_id: 
       !input scene_paddle_up
       !input scene_paddle_down
-      to:
+
 
 action:
   - choose:
