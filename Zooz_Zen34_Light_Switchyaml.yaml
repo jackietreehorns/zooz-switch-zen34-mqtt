@@ -9,12 +9,6 @@ blueprint:
         selector:
           entity:
             domain: sensor 
-    scene_paddle_down:
-        name: Button B - Down/Off
-        description: Scene for Paddle Down
-        selector:
-          entity:
-            domain: sensor 
     button_up:
       name: Button A - Up/On press 1x
       description: Action to run, when the button is pressed one time.
@@ -58,7 +52,6 @@ trigger:
   - platform: state
     entity_id: 
       - !input scene_paddle_up
-      - !input scene_paddle_down
     to:
 
 
@@ -95,8 +88,3 @@ action:
                 entity_id: !input scene_paddle_up
                 state: '1'
             sequence: !input button_up_hold
-      - conditions:
-          - condition: state
-            entity_id: !input scene_paddle_down
-            state: '0'
-        sequence: !input button_down
