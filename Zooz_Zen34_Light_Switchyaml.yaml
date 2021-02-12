@@ -49,9 +49,9 @@ blueprint:
 mode: restart  
 
 trigger:
-  - platform: state
-    entity_id: !input scene_paddle_up
-    to: '0'
+- platform: state
+  entity_id: !input scene_paddle_up
+  to: '0'
 
 action:
   - choose:
