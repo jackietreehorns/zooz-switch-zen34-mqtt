@@ -1,0 +1,154 @@
+blueprint:
+  name: Zooz Zen34 Light Switch
+  description: Switch Control
+  domain: automation
+  input:
+    scene_paddle_up:
+      name: Button A - Up/On
+      description: Scene for Paddle Up
+      selector:
+        entity:
+          domain: sensor
+    scene_paddle_down:
+      name: Button B - Down/On
+      description: Scene for Paddle down
+      selector:
+        entity:
+          domain: sensor
+    button_up:
+      name: Button A - Up/On press 1x
+      description: Action to run, when the button is pressed one time.
+      default: []
+      selector:
+        action: {}
+    button_upx2:
+      name: Button A - Up/On press 2x
+      description: Action to run, when the button is pressed two times.
+      default: []
+      selector:
+        action: {}
+    button_upx3:
+      name: Button A - Up/On press 3x
+      description: Action to run, when the button is pressed three times.
+      default: []
+      selector:
+        action: {}
+    button_upx4:
+      name: Button A - Up/On press 4x
+      description: Action to run, when the button is pressed four times.
+      default: []
+      selector:
+        action: {}
+    button_up_hold:
+      name: Button A - Up/On Hold
+      description: Action to repeat, when the button is held.
+      default: []
+      selector:
+        action: {}
+    button_down:
+      name: Button B - Down/On press 1x
+      description: Action to run, when the button is pressed one time.
+      default: []
+      selector:
+        action: {}
+    button_downx2:
+      name: Button B - Down/On press 2x
+      description: Action to run, when the button is pressed two times.
+      default: []
+      selector:
+        action: {}
+    button_downx3:
+      name: Button B - Down/On press 3x
+      description: Action to run, when the button is pressed three times.
+      default: []
+      selector:
+        action: {}
+    button_downx4:
+      name: Button B - Down/On press 4x
+      description: Action to run, when the button is pressed four times.
+      default: []
+      selector:
+        action: {}
+    button_down_hold:
+      name: Button B - Down/On Hold
+      description: Action to repeat, when the button is held.
+      default: []
+      selector:
+        action: {}
+  source_url: https://gist.github.com/jackietreehorns/bd33d282fdfcd97744f677842f646dcb
+mode: restart
+trigger:
+- platform: state
+  entity_id:
+  - !input 'scene_paddle_up'
+  - !input 'scene_paddle_down'
+  to:
+  - '0'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+action:
+- choose:
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_up'
+      state: '0'
+    sequence: !input 'button_up'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_up'
+      state: '3'
+    sequence: !input 'button_upx2'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_up'
+      state: '4'
+    sequence: !input 'button_upx3'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_up'
+      state: '5'
+    sequence: !input 'button_upx4'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_up'
+      state: '2'
+    sequence:
+    - repeat:
+        until:
+        - condition: state
+          entity_id: !input 'scene_paddle_up'
+          state: '1'
+        sequence: !input 'button_up_hold'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_down'
+      state: '0'
+    sequence: !input 'button_down'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_down'
+      state: '3'
+    sequence: !input 'button_downx2'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_down'
+      state: '4'
+    sequence: !input 'button_downx3'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_down'
+      state: '5'
+    sequence: !input 'button_downx4'
+  - conditions:
+    - condition: state
+      entity_id: !input 'scene_paddle_down'
+      state: '2'
+    sequence:
+    - repeat:
+        until:
+        - condition: state
+          entity_id: !input 'scene_paddle_down'
+          state: '1'
+        sequence: !input 'button_down_hold'
